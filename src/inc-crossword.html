@@ -1,0 +1,109 @@
+<div class="cw crossword" id="crossword">
+  <div class="cw-topimg"><img src="./assets/images/mcwords-top.png" alt="Кроссворд для куриных экспертов" loading="lazy"></div>
+  <div class="cw-inner">
+    <div class="cw-heading">
+      <h2 class="cw-title">Кроссворд для настоящих куриных экспертов!</h2>
+      <div class="cw-aftertitle">Давай проверим твои знания! Заполни кроссворд и получи <span class="cw-marked">сочнейший купон</span> со вкусной курочкой из МакДональдс!</div>
+    </div>
+
+    <div class="cw-game">
+      <div class="cw-field">
+        <div
+          class="cw-word"
+          v-for="(word, index) in words"
+          :key="word.id"
+          :id="'cw-word-'+word.id"
+          :data-id="word.id"
+          :data-length="word.word.length"
+          :data-co="word.cross_origin"
+          :data-cs="word.cross_siblings"
+          :class="word.direction"
+        >
+          <span class="cw-word-id">#{{word.id}}</span>
+          <input
+            type="text"
+            v-for="(letter,count) in word.word"
+            :data-index="count"
+            :data-parent="word.id"
+            :data-id="word.id+'_'+count"
+            class="cw-letter"
+            maxlength="1"
+            @input="fillWord"
+            @keyup="keyDown"
+            @click.prevent="showHint"
+          />
+        </div>
+      </div>
+      <div class="cw-hint" v-if="isHint">
+        <div class="cw-hint-title">Кликни на слово</div>
+        <div class="cw-hint-question">
+          <div class="cw-hint-id">#{{currentQuestion()[0].id}}</div>
+          <div class="cw-hint-txt" v-html="currentQuestion()[0].question"></div>
+        </div>
+      </div>
+    </div><!--.game-->
+
+    <div class="cw-questions" v-if="words">
+      <div class="row">
+        <div class="col-sm-6">
+          <h5 class="cw-questions-title">По вертикали:</h5>
+          <div class="cw-question"
+            v-for="(question, index) in verticalQuestions"
+            :key="question.id"
+          >
+            <span class="cw-question-number">#{{question.id}}</span>
+            <div class="cw-question-content" v-html="question.question"></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <h5 class="cw-questions-title">По горизонтали:</h5>
+          <div class="cw-question"
+            v-for="(question, index) in horizontalQuestions"
+            :key="question.id"
+          >
+            <span class="cw-question-number">#{{question.id}}</span>
+            <div class="cw-question-content" v-html="question.question"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cw-hidden hidden">
+
+      <div class="cw-modal-wrp" v-show="isWin">
+        <div class="cw-modal-container">
+          <div class="cw-modal-content">
+            <div class="cw-modal">
+              <div class="cw-modal-label">Поздравляем!</div>
+              <div class="cw-modal-title">Вы разгадали все слова и можете смело назвать себя куриным экспертом!</div>
+              <p>Укажите свою почту в поле ниже, чтобы получить подарок.</p>
+              <form id="cw_form" class="cw-form">
+                <div class="cw-form-field">
+                  <input type="email" placeholder="E-mail" name="email" required>
+                </div>
+                <button type="submit" class="cw-button">Отправить</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cw-modal-wrp" v-if="isSended">
+        <div class="cw-modal-container">
+          <div class="cw-modal-content">
+            <div class="cw-modal">
+              <div class="cw-modal-close" @click="isSended = false"></div>
+              <div class="cw-modal-label">Спасибо за участие!</div>
+              <div class="cw-modal-title">Скорее проверяйте почту и забирайте свое аппетитное предложение!!</div>
+              <div class="cw-modal-icon"><img src="./assets/images/mcwords-popup.svg" loading="lazy" alt="Спасибо за участие"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="cw-bottomimg"><img src="./assets/images/mcwords-bottom.png" alt="Кроссворд для куриных экспертов" loading="lazy"></div>
+</div><!--.crossword-->
+
+

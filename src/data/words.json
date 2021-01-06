@@ -1,0 +1,9 @@
+[
+  {"id":1,"direction":"vertical","word":"терияки","question":"Японский соус для курочки","cross_origin":"2,6","cross_siblings":"2_1,3_1"},
+  {"id":2,"direction":"horizontal","word":"крылышки","question":"У курицы их двое, а у нас в коробке 3 или 5 штук","cross_origin":"1","cross_siblings":"1_2"},
+  {"id":3,"direction":"horizontal","word":"чикенбургер","question":"Что за бургер?<br/>Куриная котлета в панировке, булочка, свежий салат и специальный соус!","cross_origin":"1,4,7,9","cross_siblings":"1_6,5_2,7_2,6_7"},
+  {"id":4,"direction":"horizontal","word":"чиккер","question":"Новый куриный бургер необычной формы","cross_origin":"5","cross_siblings":"5_4"},
+  {"id":5,"direction":"vertical","word":"панировка","question":"Хрустящая «одежка» наших куриных продуктов","cross_origin":"2,4","cross_siblings":"3_4,4_5"},
+  {"id":6,"direction":"vertical","word":"макнаггетс","question":"Эти кусочки бывают четырех форм: кружочек, колокольчик, сапожок и косточка. Угадаете, что это?","cross_origin":"7","cross_siblings":"3_9"},
+  {"id":7,"direction":"vertical","word":"стрипсы","question":"Как по-другому назвать наши «куриные полосочки»?","cross_origin":"2","cross_siblings":"3_7"}
+]
